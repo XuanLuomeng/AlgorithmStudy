@@ -19,6 +19,8 @@ public class IsSameTree {
     }
 
     // 思路: 广度遍历
+    // 优点: 不存在栈溢出
+    // 缺点: 实现难度高, 内存消耗大
     public boolean isSameTreeTwo(TreeNode p, TreeNode q) {
         // 两个树均为空，则返回true；一个树为空，一个树不为空，则返回false
         if (p == null && q == null) {
@@ -72,6 +74,8 @@ public class IsSameTree {
     }
 
     // 思路: 深度遍历
+    // 优点: 实现难度低
+    // 缺点: 递归调用深度过深, 栈溢出
     public boolean isSameTree(TreeNode p, TreeNode q) {
         // 递归终止条件: 两个节点都为空，节点相同，返回true
         if (p == null && q == null) {
