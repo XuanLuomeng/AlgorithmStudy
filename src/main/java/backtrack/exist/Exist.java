@@ -29,7 +29,7 @@ public class Exist {
      */
     public boolean exist(char[][] board, String word) {
         result = false;
-        if (!optimize(board, word)) {
+            if (!optimize(board, word)) {
             return result;
         }
 
