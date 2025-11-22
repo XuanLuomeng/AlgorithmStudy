@@ -11,9 +11,19 @@ package binarySearch.searchRange;
  * 你必须设计并实现时间复杂度为 O(log n) 的算法解决此问题。
  */
 public class SearchRange {
+    /**
+     * 在排序数组中查找目标值的第一个和最后一个位置
+     * 使用二分查找找到目标值的一个位置，然后向左右扩展找到边界
+     *
+     * @param nums   已排序的整数数组
+     * @param target 要查找的目标值
+     * @return 包含目标值第一个和最后一个位置的数组，如果不存在则返回[-1, -1]
+     */
     public int[] searchRange(int[] nums, int target) {
         int[] ans = new int[]{-1, -1};
         int left = 0, right = nums.length - 1;
+
+        // 二分查找找到目标值的一个位置
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
@@ -25,6 +35,8 @@ public class SearchRange {
                 right = mid - 1;
             }
         }
+
+        // 从找到的位置向左右扩展，找到目标值的边界
         left = ans[0];
         right = ans[0];
         while (left != -1) {
@@ -36,6 +48,7 @@ public class SearchRange {
                 break;
             }
         }
+
         ans[0] = left;
         ans[1] = right;
         return ans;
