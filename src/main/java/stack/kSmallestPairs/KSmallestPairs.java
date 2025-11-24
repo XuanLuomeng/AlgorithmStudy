@@ -40,13 +40,13 @@ public class KSmallestPairs {
             int[] cur = pq.poll();
             int i = cur[1], j = cur[2];
 
-            // 如果nums2中还有后续元素，则将当前nums1[i]与nums2[j+1]组成的数对加入队列
-            if (j + 1 < nums2.length) {
-                pq.offer(new int[]{nums1[i] + nums2[j + 1], i, j + 1});
-            }
-
             // 将当前数对添加到结果列表中
-            ans.add(new ArrayList<>(Arrays.asList(nums1[i], nums2[j])));
+            ans.add(new ArrayList<>(Arrays.asList(nums1[i], nums2[j++])));
+
+            // 如果nums2中还有后续元素，则将当前nums1[i]与nums2[j+1]组成的数对加入队列
+            if (j < nums2.length) {
+                pq.offer(new int[]{nums1[i] + nums2[j], i, j});
+            }
         }
 
         return ans;
